@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3</title>
+    <link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+    <h1>Page 3</h1>
+    <p>Below is a simple contact form, which can be completed by 
+        the user. It has no processing attached to it at the moment.</p>
+    <form action="">
+        <h2>Contact Form</h2>
+        <p>Please complete all of the details.</p>
+        <input type="text" name="fullname" placeholder="Enter your name...">
+        <div class="txtinput">
+            <label>Name</label>
+            <input type="text" name="fullname" placeholder="Enter your name...">
+        </div>
+        <div class="txtinput">
+            <label>Phone Number</label>
+            <input type="tel" name="phonenumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter your phone number...">
+        </div>
+        <div class="txtinput">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email address...">
+        </div>
+        <div class="txtinput">
+            <label>Message/Comment</label>
+            <textarea name="comment" cols="60" rows="10">Enter a comment...</textarea>
+        </div>
+        <button id="submitbutton" type="submit" name="submit">SUBMIT</button>
+    </form>
+    <a id="textlink" href="index.html">Link to index page</a>
+</body>
+</html>
