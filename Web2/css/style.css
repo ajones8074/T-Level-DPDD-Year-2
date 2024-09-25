@@ -1,0 +1,48 @@
+body{
+    background-color: powderblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1{
+    margin: 20px;
+    border: 20px;
+    padding: 40px;
+    color: blue;
+    font-size: 300%;
+}
+
+p{
+    border: 3px solid;
+    border-color: red;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 200px;
+    color: red;
+}
+
+button{
+    background-color: sienna;
+    color: black;
+    padding: 5px;
+}
+
+button:hover{
+    background-color: white;
+    color: sienna;
+}
+
+a#textlink:link, a#textlink:visited{
+    background-color: sienna;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid black;
+    
+}
+
+a#textlink:hover{
+    background-color: white;
+    color: sienna;
+}
