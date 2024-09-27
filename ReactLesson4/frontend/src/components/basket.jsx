@@ -7,24 +7,22 @@ import {
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import Cookies from 'js-cookie';
+import { BsBagX } from "react-icons/bs";
 
-export default function Basket(){
-    const [basket, setBasket] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false);
+export default function Basket({basketData, isLoaded}){
 
-    useEffect(() => {
-        var user = Cookies.get("user")
+    const RemoveFromBasket = (event) => {
+        var userid = Cookies.get("user");
+        var item = event.currentTarget.id
+        console.log(userid+'|'+item)
         axios
-        .get("http://localhost:3000/basket/?user="+user)
-        .then((res) =>{
-            setBasket(res.data)
-            setIsLoaded(true);
-            console.log(res.data.items)
+        .delete("http://localhost:3000/basket/item?item="+item+"&user="+userid, {
+            item:item,user:userid
+        }).then((res) => {
+            console.log(res.data)
         })
-        .catch((err) => console.log(err))
-    },[]);
+    }
 
-    
     if(isLoaded)
     {
         return (
@@ -44,13 +42,13 @@ export default function Basket(){
                             </thead>
                             <tbody>
                                 {
-                                    basket.items.map(item=>(
+                                    basketData.items.map(item=>(
                                         <tr>
                                             <td>{item.name}</td>
                                             <td>{item.quantity}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.quantity * item.price}</td>
-                                            <td></td>
+                                            <td>£{item.price.toFixed(2)}</td>
+                                            <td>£{(item.quantity * item.price).toFixed(2)}</td>
+                                            <td><Button id={item.id} variant='danger' onClick={RemoveFromBasket}><BsBagX /></Button></td>
                                         </tr>
                                     ))
                                 }
@@ -58,7 +56,7 @@ export default function Basket(){
                             </tbody>
                         </Table>
                         <Card.Text>
-                            Total Price: £{basket.total}
+                            Total Price: £{basketData.total.toFixed(2)}
                             <Button className='float-end' variant='success'>Check Out</Button>
                         </Card.Text>
                     </Card.Body>

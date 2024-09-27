@@ -50,6 +50,7 @@ router.post('/item', async function(req, res, next) {
     try{
         var user = req.body.user;
         var item = req.body.item;
+        console.log(req.body)
         const client = new MongoClient(uri);
         const database = client.db("coffee");
         const collection = database.collection("basket");
@@ -104,6 +105,44 @@ router.post('/item', async function(req, res, next) {
     }
 
 });
+
+router.delete('/item', async function(req, res, next) {
+    const client = new MongoClient(uri);
+    const database = client.db("coffee");
+    const collection = database.collection("basket");
+    var basket = await collection.findOne({user:req.query.user})
+
+    var newItems = [];
+    for(const item of basket.items)
+    {
+        if(item.item == req.query.item)
+        {
+            if(item.quantity>1)
+            {
+                newItems.push({
+                    item:item.item,
+                    quantity:item.quantity-1
+                })
+            }
+        }else{
+            newItems.push({
+                item:item.item,
+                quantity:item.quantity
+            })
+        }
+    }
+
+    await collection.updateOne({
+        user:req.query.user
+    },
+    {
+        "$set":{
+            items:newItems
+        }
+    })
+
+    res.json({"Success":1})
+})
 
 async function CheckExistingBasket(userid) {
     const client = new MongoClient(uri);
