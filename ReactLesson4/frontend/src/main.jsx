@@ -8,6 +8,8 @@ import Root from "./routes/root"
 import Site from './routes/site';
 import Register from './routes/register';
 import Login from './routes/login';
+import Order from './routes/order';
+import Orders from './routes/orders';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>
+  },
+  {
+    path: "/order/:orderid",
+    element: <Order/>
+  },
+  {
+    path: "/orders",
+    element: <Orders/>
   }
 ])
 

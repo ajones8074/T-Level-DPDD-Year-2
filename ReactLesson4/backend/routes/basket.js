@@ -18,28 +18,35 @@ router.get('/', async function(req, res, next) {
 
         var total = 0
         var newBasket = []
-        for(const item of basket.items)
+        if(basket!=null)
         {
-            for(const product of products)
+            for(const item of basket.items)
             {
-                if(product._id==item.item)
+                for(const product of products)
                 {
-                    newBasket.push({
-                        price:product.price,
-                        name:product.name,
-                        quantity:item.quantity,
-                        id:item.item
-                    })
-                    total = total + (item.quantity * product.price);
+                    if(product._id==item.item)
+                    {
+                        newBasket.push({
+                            price:product.price,
+                            name:product.name,
+                            quantity:item.quantity,
+                            id:item.item
+                        })
+                        total = total + (item.quantity * product.price);
+                    }
                 }
             }
+    
+            res.json({
+                items:newBasket,
+                total:total
+            })
+        }else{
+            res.status(500).json({message:"You have no basket"})
         }
-
-        res.json({
-            items:newBasket,
-            total:total
-        })
+        
     }catch(error){
+        res.status(500)
         console.log(error)
     }
 

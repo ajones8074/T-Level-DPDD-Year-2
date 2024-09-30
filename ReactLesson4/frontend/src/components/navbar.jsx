@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import{
     Container,
     Navbar,
+    Nav
 } from 'react-bootstrap'
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
@@ -28,6 +29,7 @@ export default function PageNavbar(){
         <Navbar className='bg-body-tertiary'>
             <Container>
                 <Navbar.Brand href='/'>Bean and Brew Coffee</Navbar.Brand>
+                <Nav.Link href='/orders'>Orders</Nav.Link>
                 <Navbar.Toggle />
                 <Navbar.Collapse className='justify-content-end'>
                     <Navbar.Text>
