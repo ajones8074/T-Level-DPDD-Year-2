@@ -14,7 +14,7 @@ block content
     // and the text of the post too 
       this will output just the first 50 characters
       and will put ... at the end 
-    p Text  #{post.content.substring(0,50) + '...'}
+    p #{post.content.substring(0,50) + '...'}
     // this will create a button that links to
       /post/whatever the id of the post is
     a(href='/post/' + post._id)
