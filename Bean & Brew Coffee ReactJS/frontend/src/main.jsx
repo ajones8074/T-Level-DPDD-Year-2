@@ -7,6 +7,7 @@ import {
 import Root from "./routes/root"
 import Site from './routes/site';
 import Register from './routes/register';
+import Login from './routes/login';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>
+  },
+  {
+    path: "/login",
+    element: <Login/>
   }
 ])
 
