@@ -17,8 +17,9 @@ block content
     p #{post.content.substring(0,50) + '...'}
     // this will create a button that links to
       /post/whatever the id of the post is
-    a(href='/post/' + post._id)
-      button(type="button") Go to post 
+    .button
+      a(href='/post/' + post._id,)
+        button(type="button") Go to post 
 
 
   //create a form that links to /post
@@ -33,3 +34,7 @@ block content
         textarea#content(name='content', v-model='desc', required)
     p 
       input(value='Submit', type='submit')
+  p 
+    a(href="/users") Manage Users 
+  p 
+    a(href="/logout") Logout 

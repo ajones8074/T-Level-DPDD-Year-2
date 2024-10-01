@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 //Get the package for mongodb
 const { MongoClient } = require("mongodb");
+var CryptoJS = require('crypto-js')
 
 //set the url for the connection with the database
 const uri = "mongodb://localhost:27017/";
@@ -28,8 +29,8 @@ router.post('/', async function(req, res, next){
     const collection = database.collection("users");
 
     //get the new users email and password from the requests body
-    var email = req.body.email
-    var password = req.body.password
+    var email = req.body.email;
+    var password = CryptoJS.SHA512(req.body.password).toString();
 
     //query the database for the number of users with matching information
     var numUsers = await collection.countDocuments({

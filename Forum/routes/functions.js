@@ -38,8 +38,8 @@ async function EmailToken(token)
     var user = await collection.findOne({
         _id: new mongo.ObjectId(token)
     })
-
-    return user.email
+    console.log(user);
+    return user.email;
 }
 
 //this allows the function to be accessible from outside this file
