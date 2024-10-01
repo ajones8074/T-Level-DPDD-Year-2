@@ -7,10 +7,15 @@ import {
     Button
 } from 'react-bootstrap'
 import axios from 'axios';
+import Cookies from 'js-cookie'
+import Basket from "./basket";
 
 export default function OrderingTable(){
     const [drinks, setDrinks] = useState([]);
     const [foods, setFoods] = useState([]);
+    const [update, setUpdate] = useState(1);
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [basket, setBasket] = useState([])
 
 
     useEffect(() => {
@@ -20,7 +25,43 @@ export default function OrderingTable(){
             setDrinks(res.data)
         })
         .catch((err) => console.log(err))
+        var user = Cookies.get("user")
+        axios
+        .get("http://localhost:3000/basket/?user="+user)
+        .then((res) =>{
+            setBasket(res.data)
+            setIsLoaded(true);
+            console.log(res.data.items)
+        })
+        .catch((err) => {
+            console.log(err)
+            setBasket({})
+            setIsLoaded(false);
+        })
     },[]);
+
+    const AddToBasket = (event) => {
+        var userid = Cookies.get("user");
+        var item = event.currentTarget.parentNode.parentNode.id
+        console.log(item)
+        axios
+        .post("http://localhost:3000/basket/item",{
+            item:item,user:userid
+        }).then((res) => {
+            console.log(res.data)
+        }).then(() =>{
+            axios
+            .get("http://localhost:3000/basket/?user="+userid)
+            .then((res) =>{
+                setBasket(res.data)
+                setIsLoaded(true);
+                console.log(res.data.items)
+            })
+            .catch((err) => console.log(err))
+        })
+
+        
+    }
 
     useEffect(() => {
         axios
@@ -49,16 +90,17 @@ export default function OrderingTable(){
                     <tbody>
                         {
                             drinks.map(drink => (
-                                <tr key={drink.id}>
+                                <tr id={drink._id} key={drink._id}>
                                     <td><img src={drink.image} style={{width:"100px"}} /></td>
                                     <td>{drink.name}</td>
-                                    <td>£{drink.price}</td>
-                                    <td><Button>Add to Basket</Button></td>
+                                    <td>£{drink.price.toFixed(2)}</td>
+                                    <td><Button id={drink.id} onClick={AddToBasket}>Add to Basket</Button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </Table>
+                <Basket basketData={basket} isLoaded={isLoaded} key={update}/>
             </Tab>
             <Tab eventKey="food" title="Food">
                 <Table striped>
@@ -73,16 +115,17 @@ export default function OrderingTable(){
                     <tbody>
                         {
                             foods.map(food => (
-                                <tr key={food.id}>
+                                <tr id={food._id} key={food._id}>
                                     <td><img src={food.image} style={{width:"100px"}} /></td>
                                     <td>{food.name}</td>
-                                    <td>£{food.price}</td>
-                                    <td><Button>Add to Basket</Button></td>
+                                    <td>£{food.price.toFixed(2)}</td>
+                                    <td><Button onClick={AddToBasket}>Add to Basket</Button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </Table>
+                <Basket basketData={basket} isLoaded={isLoaded} key={update}/>
             </Tab>
         </Tabs>
     );
