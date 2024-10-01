@@ -9,7 +9,6 @@ import{
 } from 'react-bootstrap'
 import axios from 'axios';
 
-
 export default function Root(){
     const [sites, setSites] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
@@ -31,13 +30,13 @@ export default function Root(){
                     <Row>
                         {
                             sites.map(site =>(
-                                <Col sm={4} className='text-center'>
+                                <Col md={4} className='text-center'>
                                     <Card style={{ width: '100%', height:"100%" }} key={site._id}>
                                         <Card.Img variant="top" src={site.image}/>
                                         <Card.Body>
                                             <Card.Title>{site.name}</Card.Title>
                                             <Card.Text>{site.description}</Card.Text>
-                                            <Button variant="primary">Go somewhere</Button>
+                                            <Button href={"/site/"+site._id} variant="primary">Go somewhere</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -46,7 +45,5 @@ export default function Root(){
                 </Row>
             </Container>
         );
-    }
-    
-    
+    } 
 }
