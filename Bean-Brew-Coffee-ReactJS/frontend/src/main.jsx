@@ -10,6 +10,7 @@ import Register from './routes/register';
 import Login from './routes/login';
 import Order from './routes/order';
 import Orders from './routes/orders';
+import Staff from './routes/staff';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/orders",
     element: <Orders/>
+  },
+  {
+    path: "/staff",
+    element: <Staff/>
   }
 ])
 

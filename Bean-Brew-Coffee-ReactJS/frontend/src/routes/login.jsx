@@ -81,6 +81,11 @@ export default function Login(){
                                     </Form>
                                 </Card.Text>
                             </Card.Body>
+                            <Card.Footer>
+                                <Card.Text>
+                                    Do not have an account? <Button variant='primary' href="/register">Click Here to Register</Button>
+                                </Card.Text>
+                            </Card.Footer>
                         </Card>
                     </Col>
                     <Col xs="2" style={{paddingTop:"10px"}}></Col>
