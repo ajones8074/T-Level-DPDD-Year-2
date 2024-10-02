@@ -1,3 +1,8 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
     background-color: powderblue;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -44,24 +49,23 @@ a#textlink:hover{
 
 form{
     background-color: azure;
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
     margin: auto;
+    align-items: center;
 }
 
 form p{
+    width: 100%;
     border: none;
     color: black;
 }
 
-form input{
-    width: 50%;
-    margin: 20px;
-}
-
-.txtinput{
+.txtinput {
     width: 70%;
-    margin: 20px;
-    padding: 12px 18px;
+    max-width: 500px;
+    margin: 20px; 
+    padding: 12px 12px;
     border: 1px solid grey;
     border-radius: 8px;
 }
@@ -79,9 +83,16 @@ form input{
     outline: none;
     font-size: 14px;
     margin-top: 6px;
+ }
+
+ 
+.txtinput textarea{
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    margin-top: 6px;
 }
-
-
 
 #submitbutton{
     width: 100%;
@@ -92,4 +103,42 @@ form input{
     padding-top: 8px;
     padding-bottom: 8px;
     cursor: pointer;
+}
+
+#submitbutton:hover{
+    background-color: #816b6b;
+    color:#1e1e1e;
+}
+
+nav{
+    margin-top: 0px;
+    display: block;
+    float: left;
+    background-color: #ecdbdb;
+    width: 100%;
+}
+
+nav ul{
+    list-style: none;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav ul li{
+    float: left;
+    background-color: black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: blanchedalmond;
+}
+
+nav ul li a:hover{
+    color: red;
 }
