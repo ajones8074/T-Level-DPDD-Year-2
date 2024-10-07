@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "66ed368a0ea4100cd834654d"
+  },
+  "description": "Leeds Store",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Leeds_City_Square.jpg",
+  "name": "Leeds"
+},
+{
+  "_id": {
+    "$oid": "66ed3e900ea4100cd834654e"
+  },
+  "description": "Harrogate Store",
+  "image": "https://th.bing.com/th/id/OIP.0lP26EkAF24uaGQl6JaLywHaFU?rs=1&pid=ImgDetMain",
+  "name": "Harrogate"
+},
+{
+  "_id": {
+    "$oid": "66ed3f2d0ea4100cd834654f"
+  },
+  "image": "https://i.pinimg.com/originals/e4/6a/8b/e46a8bb9decb3bdddc73d30557987e9c.jpg",
+  "name": "Knaresborough Castle",
+  "description": "Knaresborough Castle Store"
+}]
