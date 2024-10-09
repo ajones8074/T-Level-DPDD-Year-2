@@ -87,6 +87,11 @@ export default function Register(){
                         </p>
                     </Alert>
                         <Card>
+                            <Card.Header>
+                                <Card.Text>
+                                    Already have an account? <Button variant='primary' href="/login">Click Here to Login</Button>
+                                </Card.Text>
+                            </Card.Header>
                             <Card.Body>
                                 <Card.Title>Register</Card.Title>
                                 <Card.Text>

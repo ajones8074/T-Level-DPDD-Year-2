@@ -29,7 +29,10 @@ export default function PageNavbar(){
         <Navbar className='bg-body-tertiary'>
             <Container>
                 <Navbar.Brand href='/'>Bean and Brew Coffee</Navbar.Brand>
-                <Nav.Link href='/orders'>Orders</Nav.Link>
+                <Nav className="me-auto">
+                    <Nav.Link href='/orders'>Orders</Nav.Link>
+                    <Nav.Link href='/staff'>Staff</Nav.Link>
+                </Nav>
                 <Navbar.Toggle />
                 <Navbar.Collapse className='justify-content-end'>
                     <Navbar.Text>

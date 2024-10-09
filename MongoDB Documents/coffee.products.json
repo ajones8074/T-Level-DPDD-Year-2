@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "66f127916fdb8c4965599405"
+  },
+  "name": "Latte",
+  "price": 3,
+  "image": "https://www.caffesociety.co.uk/assets/recipe-images/latte-small.jpg",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f1284a6fdb8c4965599406"
+  },
+  "name": "Tea",
+  "price": 2.5,
+  "image": "https://images.pexels.com/photos/1399086/pexels-photo-1399086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f134ef6fdb8c4965599407"
+  },
+  "name": "Toast",
+  "price": 2.5,
+  "image": "https://ichef.bbci.co.uk/news/976/cpsprodpb/108C/production/_111063240_toaster8.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "66f13fb86fdb8c4965599409"
+  },
+  "name": "Cheeseburger",
+  "price": 5.5,
+  "image": "https://cdn.wallpapersafari.com/44/76/bU3jzF.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940a"
+  },
+  "name": "Cappuccino",
+  "price": 3,
+  "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940b"
+  },
+  "name": "Mocha",
+  "price": 3,
+  "image": "https://mediocrest.github.io/Mediocre-s-Cafe/assets/images/trending-item-12.jpg",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940c"
+  },
+  "name": "Flat white",
+  "price": 3,
+  "image": "https://cdn.tasteatlas.com/images/ingredients/3db2cebfdb374af4910fbc6f7ba07065.jpg",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940d"
+  },
+  "name": "Hot Chocolate",
+  "price": 3,
+  "image": "https://www.cookingclassy.com/wp-content/uploads/2018/10/hot-chocolate-33.jpg",
+  "type": "drink"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940e"
+  },
+  "name": "Ham Baguette",
+  "price": 4,
+  "image": "https://www.christinascucina.com/wp-content/uploads/2016/01/IMG_1329.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c496559940f"
+  },
+  "name": "Pizza",
+  "price": 8,
+  "image": "https://cdn2.cocinadelirante.com/sites/default/files/images/2017/01/pizzapepperonni.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "66f1472a6fdb8c4965599410"
+  },
+  "name": "Tofu",
+  "price": 9.95,
+  "image": "https://i0.wp.com/www.relishthebite.com/wp-content/uploads/2015/03/TOFU-2.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "6703b5ccc8392d7ac5ac287b"
+  },
+  "name": "Chicken Borgor",
+  "price": 5,
+  "image": "https://3.bp.blogspot.com/-hcIXU5dX6n0/VnK4mIBsbOI/AAAAAAAAANE/0WLpskQjCOA/s1600/5ac178b0-86da-4e6f-b71f-ff6dbce633ae.jpg",
+  "type": "food"
+},
+{
+  "_id": {
+    "$oid": "6703c696c8392d7ac5ac287c"
+  },
+  "image": "https://www.mccainfoodservice.co.uk/wp-content/uploads/2019/01/Classics-Chippy-Chips-1000000041_I.jpg",
+  "name": "Chippy Chips",
+  "price": 2.5,
+  "type": "food"
+}]

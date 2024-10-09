@@ -106,4 +106,50 @@ router.get('/:order', async function(req,res,next) {
 
 });
 
+router.get('/site/:id', async function(req, res, next) {
+    try{
+        var site_id = req.params.id;
+        const client = new MongoClient(uri);
+        const database = client.db("coffee");
+        
+        var orders = await database.collection('orders').find({
+            site:site_id
+        }).toArray();
+
+        var ordersarr = [];
+        for(const order of orders)
+        {
+            var orderTotal = 0;
+            var itemsData = [];
+            
+            for(const item of order.items)
+            {
+                var product = await database.collection('products').findOne({
+                    _id: new mongo.ObjectId(item.item)
+                })
+                itemsData.push({
+                    item:item.item,
+                    quantity:item.quantity,
+                    price:product.price,
+                    image:product.image,
+                    name:product.name
+                })
+                orderTotal = orderTotal + (item.quantity * product.price)
+            }
+            ordersarr.push({
+                id:order._id,
+                items:itemsData,
+                total:orderTotal,
+                timestamp:order.timestamp
+            })
+        }
+
+        res.json(ordersarr);
+
+    }catch(error){
+        console.log(error)
+        res.status(500).json({message:"Could not get orders for site"})
+    }
+})
+
 module.exports = router;

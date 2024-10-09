@@ -6,9 +6,11 @@ import{
     Col,
     Button,
     Card,
-    Navbar
+    Navbar,
+    Nav
 } from 'react-bootstrap'
 import axios from 'axios';
+import RootNavbar from "../components/root_navbar";
 
 export default function Root(){
     const [sites, setSites] = useState([])
@@ -28,18 +30,7 @@ export default function Root(){
         {
             return (
                 <>
-                    <Navbar>
-                        <Container>
-                            <Navbar.Brand href='/'>Bean and Brew Coffee</Navbar.Brand>
-                            <Navbar.Toggle />
-                            <Navbar.Collapse className='justify-content-end'>
-                                <Navbar.Text>
-                                    <Button href="/login" variant="primary" style={{color: "white", margin:"10px"}}>Login</Button>
-                                    <Button href="/register" variant="primary" style={{color: "white", margin:"10px"}}>Register</Button>
-                                </Navbar.Text>
-                            </Navbar.Collapse>
-                        </Container>
-                    </Navbar>
+                    <RootNavbar/>
                     <Container fluid style={{alignContent: "center"}}>
                         <Row>
                             {
