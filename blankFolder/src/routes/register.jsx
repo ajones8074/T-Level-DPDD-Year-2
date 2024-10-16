@@ -27,7 +27,7 @@ export default function Register(){
         var repeatPassword = inputs.repeatPassword
         if(password == repeatPassword){
             axios
-            .post('http://api.roberthompson.co.uk/users/',{
+            .post('http://192.168.168.122:3000/users/',{
                 email:email,
                 password:password
             }).then((res) => {

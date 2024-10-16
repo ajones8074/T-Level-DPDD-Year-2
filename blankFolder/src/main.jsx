@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import Index from './routes';
 import Login from './routes/login';
 import Register from './routes/register';
 import Sites from './routes/sites';
@@ -11,7 +12,7 @@ import Sites from './routes/sites';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Hello World!</div>
+    element: <Index/>
   },
   {
     path: '/login',
