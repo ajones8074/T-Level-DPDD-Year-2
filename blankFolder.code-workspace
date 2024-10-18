@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "blankFolder"
+		},
+		{
+			"path": "../../express-pug"
+		}
+	],
+	"settings": {}
+}

@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PageNavbar from "../components/navbar";
+import Ordering from "../components/ordering";
 
 export default function Index() {
 
@@ -18,7 +19,7 @@ export default function Index() {
     useEffect(() => {
         var siteid = Cookies.get('site');
         axios
-        .get('http://192.168.168.122:3000/sites/'+siteid)
+        .get('http://127.0.0.1:3000/sites/'+siteid)
         .then((res) => {
             setSite(res.data)
         })
@@ -39,7 +40,9 @@ export default function Index() {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col xs='9'></Col>
+                    <Col xs='9'>
+                        <Ordering/>
+                    </Col>
                 </Row>
             </Container>
         </>

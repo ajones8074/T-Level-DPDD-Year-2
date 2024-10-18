@@ -27,7 +27,7 @@ export default function PageNavbar(){
                 navigate('/sites')
             }else{
                 axios
-                .get('http://192.168.168.122:3000/users/'+user+'/email')
+                .get('http://127.0.0.1:3000/users/'+user+'/email')
                 .then((res) => {
                     setUser(res.data);
                 })

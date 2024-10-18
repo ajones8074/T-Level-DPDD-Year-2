@@ -10,6 +10,7 @@ import {
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { alignPropType } from "react-bootstrap/esm/types";
 
 export default function Sites(){
 
@@ -18,7 +19,7 @@ export default function Sites(){
 
     useEffect(() =>{
         axios
-        .get('http://192.168.168.122:3000/sites/')
+        .get('http://127.0.0.1:3000/sites/')
         .then((res) => {
             setSites(res.data)
         })
