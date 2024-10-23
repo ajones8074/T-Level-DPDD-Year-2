@@ -1,0 +1,31 @@
+*{
+    font-family: Helvetica;
+    margin: 0%;
+    padding: 0%;
+}
+
+ul{
+    background-color: #252525;
+    height: 40px;
+    
+}
+
+a{
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 6px;
+}
+
+li{
+    float: right;
+    display: inline;
+}
+
+img{
+    padding: 10px;
+    max-height: 100px;
+}
+
+div.logo{
+    background-color: #252525;
+}
