@@ -147,4 +147,69 @@ router.post('/item', async function(req,res,next){
     }
 })
 
+// localhost:3000/basket.item - DELETE
+// remove an item from the basket
+// body < user + item
+router.delete('/item', async function(req,res,next) {
+    try {
+        var user = req.body.user;
+        var item = req.body.item;
+
+        const client = new MongoClient(uri);
+        const database = client.db('coffee');
+        const collection = database.collection('baskets')
+
+        // check if the user already has a basket
+        if(await CheckExistingBasket(user))
+        {
+            var basket = await collection.findOne({
+                user:user
+            })
+
+
+            var items = basket.items;
+            var newItems = []
+            for(const dbItem of items)
+            {
+                if(dbItem.item != item)
+                {
+                    newItems.push(dbItem)
+                }else{
+                    if(dbItem.quantity != 1)
+                    {
+                        newItems.push({
+                            item:dbItem.item,
+                            quantity: dbItem.quantity - 1
+                        })
+                    }
+                }
+            }
+
+            await collection.updateOne({
+                user:user
+            },{
+                "$set":{
+                    items:newItems
+                }
+            })
+
+            res.json(await GetBasket(user));
+            client.close();
+
+        }else{
+            // if the user does not have a basket return an error code
+            // and close the database connection
+            res.status(500).json({error:"User does not have a basket"})
+            client.close()
+        }
+
+    } catch (error) {
+        // if there's an error, log it and return back an error code 
+        // with a brief explanation
+        console.log(error)
+        res.status(500).json({error:"Could not remove item from basket"})
+        
+    }
+})
+
 module.exports = router;

@@ -9,9 +9,11 @@ import {
     Tabs
 } from 'react-bootstrap';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function Ordering() {
 
+    const navigate = useNavigate();
     const [isLoaded, setisLoaded] = useState(false);
     const [drinks, setDrinks] = useState([]);
     const [foods, setFoods] = useState([]);
@@ -33,8 +35,8 @@ export default function Ordering() {
                 .get('http://127.0.0.1:3000/basket?user='+userid)
                 .then((res) => {
                     setBasket(res.data);
-                    console.log(res.data)
-                    setisLoaded(true)
+                    setisLoaded(true);
+                    console.log(res.data);
                 })
             })
         })
@@ -49,6 +51,39 @@ export default function Ordering() {
             user:userid
         }).then((res) => {
             setBasket(res.data)
+        })
+    }
+
+    const RemoveFromBasket = (item) =>{
+        var userid = Cookies.get('token')
+        axios
+        .delete('http://localhost:3000/basket/item',{
+            data:{
+                item:item,
+                user:userid
+            }
+        }).then((res) => {
+            setBasket(res.data);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const CreateOrder = () => {
+        var userid = Cookies.get('token');
+        var site = Cookies.get('site');
+
+        axios
+        .post('http://localhost:3000/orders',{
+            site:site,
+            user:userid
+        }).then((res) => {
+            if(res.data.order != undefined)
+            {
+                navigate('/order/'+res.data.order);
+            }else{
+                console.log("Could not create order")
+            }
         })
     }
     
@@ -72,7 +107,7 @@ export default function Ordering() {
                             <tbody>
                                 {
                                     drinks.map(drink => (
-                                        <tr>
+                                        <tr key={drink._id}>
                                             <td><img src={drink.image} style={{width: '100px'}}/></td>
                                             <td>{drink.name}</td>
                                             <td>£{(drink.price).toFixed(2)}</td>
@@ -96,7 +131,7 @@ export default function Ordering() {
                             <tbody>
                                 {
                                     foods.map(food => (
-                                        <tr>
+                                        <tr key={food._id}>
                                             <td><img src={food.image} style={{width: '100px'}}/></td>
                                             <td>{food.name}</td>
                                             <td>£{(food.price).toFixed(2)}</td>
@@ -125,12 +160,12 @@ export default function Ordering() {
                             <tbody>
                                 {
                                     basket.items.map(item => (
-                                        <tr>
+                                        <tr key={item.item}>
                                             <td><img src={item.image} style={{width: '100px'}}/></td>
                                             <td>{item.name}</td>
                                             <td>{item.quantity}</td>
                                             <td>£{(item.quantity * item.price).toFixed(2)}</td>
-                                            <td><Button variant="danger">Remove from Basket</Button></td>
+                                            <td><Button onClick={() => {RemoveFromBasket(item.id)}} variant="danger">Remove from Basket</Button></td>
                                         </tr>
                                     ))
                                 }
@@ -138,6 +173,7 @@ export default function Ordering() {
                         </Table>
                         <Card.Text>
                             Basket Total: £{basket.total.toFixed(2)}
+                            <Button onClick={CreateOrder} className="float-end" variant="success">Create Order</Button>
                         </Card.Text>
                     </Card.Body>
                 </Card>

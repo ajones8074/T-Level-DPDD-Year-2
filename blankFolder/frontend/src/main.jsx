@@ -8,6 +8,7 @@ import Index from './routes';
 import Login from './routes/login';
 import Register from './routes/register';
 import Sites from './routes/sites';
+import Order from './routes/order';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/sites',
     element: <Sites />
+  },
+  {
+    path: '/order/:orderid',
+    element: <Order />
   }
 ])
 
