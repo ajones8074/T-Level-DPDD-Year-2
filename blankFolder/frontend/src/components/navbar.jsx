@@ -4,6 +4,7 @@ import {
     Container,
     Nav,
     Navbar,
+    NavDropdown,
     Offcanvas
 } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ import axios from "axios";
 export default function PageNavbar(){
     const navigate = useNavigate();
     const [user, setUser] = useState("");
+    var userid = Cookies.get('token');
 
     useEffect(() => {
         var user = Cookies.get('token');
@@ -50,7 +52,8 @@ export default function PageNavbar(){
                             height="30"
                             className="d-inline-block align-top"
                         />{' '}
-                        Bean & Brew Coffee</Navbar.Brand>
+                        Bean & Brew Coffee
+                    </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Offcanvas className="bg-body-tertiary" placement="end" data-bs-theme="dark">
                         <Offcanvas.Header closeButton>
@@ -63,9 +66,12 @@ export default function PageNavbar(){
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 <br></br>
                                 <Nav.Link href="/sites">Sites</Nav.Link>
+                                <NavDropdown title="Orders" id="collapsible-nav-dropdown">
+                                    <NavDropdown.Item href={"/orders/user/"+userid}>Your Orders</NavDropdown.Item>
+                                    <NavDropdown.Item href="/orders/site">Orders by Site</NavDropdown.Item>
+                                </NavDropdown>
                                 <Nav.Link href="/login">Login</Nav.Link>
                                 <Nav.Link href="/register">Register</Nav.Link>
-                                <Nav.Link href="#staff" >Staff Page</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>

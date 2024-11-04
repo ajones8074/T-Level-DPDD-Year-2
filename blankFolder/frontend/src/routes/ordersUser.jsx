@@ -1,0 +1,73 @@
+import React, {useState, useEffect} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { 
+    Button,
+    Card,
+    Col,
+    Container,
+    Row,
+    Table,
+} from 'react-bootstrap';
+import { useParams } from "react-router-dom";
+import PageNavbar from '../components/navbar';
+import Cookies from 'js-cookie';
+import axios from "axios";
+
+export default function OrdersUser(){
+    let { userid } = useParams();
+    const [orders, setOrders] = useState([]);
+    const [isLoaded, setisLoaded] = useState(false);
+
+    useEffect(() => {
+        axios
+        .get('http://localhost:3000/orders/user/'+userid)
+        .then((res) => {
+            setOrders(res.data)
+            setisLoaded(true);
+        });
+    },[userid])
+
+    if(isLoaded)
+    {
+        return(
+            <>
+                <PageNavbar/>
+                <Container fluid>
+                    <Row>
+                        <Col xs={3}></Col>
+                        <Col xs={6}>
+                            <Card>
+                                <Card.Title>Your Orders</Card.Title>
+                                <Card.Body>
+                                    <Table striped>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Site</th>
+                                                <th>Total</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                orders.map(order => (
+                                                    <tr key={order.id}>
+                                                        <td>{new Date(order.timestamp).toLocaleString('en-GB')}</td>
+                                                        <td>{order.site}</td>
+                                                        <td>£{order.total}</td>
+                                                        <td><Button href={'/order/'+order.id}>View Order</Button></td>
+                                                    </tr>
+                                                ))
+                                            }
+                                        </tbody>
+                                    </Table>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col xs={3}></Col>
+                    </Row>
+                </Container>
+            </>
+        )
+    }
+}

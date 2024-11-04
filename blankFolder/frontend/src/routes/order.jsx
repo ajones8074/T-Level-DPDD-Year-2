@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { 
+    Button,
     Card, 
     Col,
     Container, 
@@ -16,9 +17,9 @@ export default function Order(){
     const [order, setOrder] = useState([]);
     const [isLoaded, setisLoaded] = useState(false);
     let {orderid} = useParams();
+    var userid = Cookies.get('token')
 
     useEffect(() => {
-        var userid = Cookies.get('token')
         axios
         .get('http://127.0.0.1:3000/orders/'+orderid)
         .then((res) => {
@@ -34,7 +35,7 @@ export default function Order(){
                 <PageNavbar/>
                 <Container fluid>
                     <Row>
-                        <Col xs='3'>
+                        <Col xs={3}>
                             <Card>
                                 <Card.Body>
                                     <Card.Title>Order created at {order.site} store</Card.Title>
@@ -42,27 +43,43 @@ export default function Order(){
                                 </Card.Body>
                             </Card>
                         </Col> 
-                        <Col xs='9'>
+                        <Col xs={9}>
                             <Card>
                                 <Card.Body>
                                     <Table striped>
                                         <thead>
                                             <tr>
                                                 <th>Image</th>
-                                                <th>Name</th>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
                                                 <th>Price</th>
+                                                <th>Total</th>
                                             </tr>
                                         </thead>
                                         {
                                             order.items.map(item => (
-                                                <tr key={item._id}>
+                                                <tr key={item.name}>
                                                     <td><img src={item.image} style={{width: '100px'}}/></td>
                                                     <td>{item.name}</td>
+                                                    <td>{item.quantity}</td>
                                                     <td>£{(item.price).toFixed(2)}</td>
+                                                    <td>£{(item.price * item.quantity).toFixed(2)}</td>
                                                 </tr>
                                             ))
                                         }
                                     </Table>
+
+                                    <Card.Text>
+                                        Order Total: £{order.total} <br/>
+                                        Ordered at: {new Date(order.timestamp).toLocaleString("en-GB")}
+                                    </Card.Text>
+
+                                </Card.Body>
+                            </Card>
+                            <Card>
+                                <Card.Title>View All Orders</Card.Title>
+                                <Card.Body>
+                                    <Button href={'/orders/user/'+userid}>View Your Orders</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
