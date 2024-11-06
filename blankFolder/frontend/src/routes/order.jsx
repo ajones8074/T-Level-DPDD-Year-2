@@ -70,7 +70,7 @@ export default function Order(){
                                     </Table>
 
                                     <Card.Text>
-                                        Order Total: £{order.total} <br/>
+                                        Order Total: £{order.total.toFixed(2)} <br/>
                                         Ordered at: {new Date(order.timestamp).toLocaleString("en-GB")}
                                     </Card.Text>
 

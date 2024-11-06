@@ -23,7 +23,8 @@ router.post('/', async function (req,res,next) {
                 user:user,
                 site:site,
                 items:basket.items,
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                status:0
             });
 
             res.json({order:newOrder.insertedId.toString()})
@@ -74,13 +75,18 @@ async function GetOrder(order_id) {
          var site = await database.collection('sites').findOne({
              _id: new mongo.ObjectId(order.site)
          })
+
+         var status = await database.collection('order_statuses').findOne({
+            status:order.status
+         })
     
          return({
              site:site.name,
              items:itemsData,
              total:total,
              timestamp:order.timestamp,
-             id:order_id
+             id:order_id,
+             status:status.description
          });
     
     } catch (error) {
@@ -89,23 +95,6 @@ async function GetOrder(order_id) {
     } 
     
 }
-
-router.get('/:order', async function(req,res,next) {
-    try {
-        var order_id = req.params.order;
-        var order = await GetOrder(order_id);
-
-        if(order != false)
-        {
-            res.json(order)
-        }else{
-            res.status(500).json({error:"Could not get order"})
-        }
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error:"Could not get order"});
-    }
-});
 
 // localhost:3000/orders/user/<users id>
 // returns all the orders for a specific user
@@ -144,6 +133,7 @@ router.get('/user/:userid', async function (req,res,next) {
 //load all the orders for a specific site
 router.get('/site/:siteid', async function (req,res,next) {
     try {
+
         var site_id = req.params.siteid
         const client = new MongoClient(uri);
         const database = client.db('coffee');
@@ -170,6 +160,77 @@ router.get('/site/:siteid', async function (req,res,next) {
     } catch (error) {
         console.log(error);
         res.status(500).json({error:"Could not get users orders"});
+    }
+});
+
+// localhost:3000/statuses
+// return all possible statuses
+router.get('/statuses', async function(req,res,next) {
+    try {
+
+        const client = new MongoClient(uri);
+        const database = client.db('coffee');
+        const collection = database.collection('order_statuses');
+
+        var statuses = await collection.find({}).toArray();
+
+        res.json(statuses);
+
+        client.close();
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:"Could not get statuses"});
+    }
+})
+
+// localhost:3000/<order id>/status - PUT
+// PUT - updating or changing a value on the database
+// change the status of an order
+router.put('/:order/status', async function(req,res,next) {
+    try {
+
+        var order_id = req.params.order;
+        var status = req.body.status;
+
+        if(status !== undefined)
+        {
+            const client = new MongoClient(uri);
+            const database = client.db('coffee');
+            const collection = database.collection('orders');
+
+            await collection.updateOne({
+                _id: new mongo.ObjectId(order_id)
+            },{
+                "$set":{
+                    status:status
+                }
+            });
+        }
+
+        var order = await GetOrder(order_id);
+        res.json(order);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:"Could not change status"})
+    }
+})
+
+router.get('/:order', async function(req,res,next) {
+    try {
+        var order_id = req.params.order;
+        var order = await GetOrder(order_id);
+
+        if(order != false)
+        {
+            res.json(order)
+        }else{
+            res.status(500).json({error:"Could not get order"})
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:"Could not get order"});
     }
 });
 
