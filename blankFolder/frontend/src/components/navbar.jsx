@@ -72,6 +72,7 @@ export default function PageNavbar(){
                                 </NavDropdown>
                                 <Nav.Link href="/login">Login</Nav.Link>
                                 <Nav.Link href="/register">Register</Nav.Link>
+                                <Nav.Link href="/logout">Sign Out</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>

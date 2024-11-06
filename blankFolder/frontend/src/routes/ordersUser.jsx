@@ -37,8 +37,8 @@ export default function OrdersUser(){
                         <Col xs={3}></Col>
                         <Col xs={6}>
                             <Card>
-                                <Card.Title>Your Orders</Card.Title>
                                 <Card.Body>
+                                    <Card.Title>Your Orders</Card.Title>
                                     <Table striped>
                                         <thead>
                                             <tr>

@@ -77,8 +77,8 @@ export default function Order(){
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Title>View All Orders</Card.Title>
                                 <Card.Body>
+                                    <Card.Title>View All Orders</Card.Title>
                                     <Button href={'/orders/user/'+userid}>View Your Orders</Button>
                                 </Card.Body>
                             </Card>

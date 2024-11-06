@@ -62,8 +62,8 @@ export default function OrderStaff(){
                 <PageNavbar/>
                 <Container fluid>
                     <Row>
-                        <Col xs={4}></Col>
-                        <Col xs={4}>
+                        <Col xs={3}></Col>
+                        <Col xs={6}>
                             <Card>
                                 <Card.Body>
                                     <Card.Title>
@@ -114,14 +114,14 @@ export default function OrderStaff(){
                                                 }
                                             </Form.Select>
                                         </Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="primary" type="submit" style={{marginTop:"10px"}}>
                                             Submit
                                         </Button>
                                     </Form>
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col xs={4}></Col>
+                        <Col xs={3}></Col>
                     </Row>
                 </Container>
             </>

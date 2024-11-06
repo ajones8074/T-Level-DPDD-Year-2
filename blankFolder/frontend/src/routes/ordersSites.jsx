@@ -57,8 +57,8 @@ export default function OrdersSites(){
                         <Col xs={3}></Col>
                         <Col xs={6}>
                             <Card>
-                                <Card.Title>Orders</Card.Title>
                                 <Card.Body>
+                                    <Card.Title>Orders</Card.Title>
                                     <Form.Group>
                                         <Form.Label>Select Site</Form.Label>
                                         <Form.Select onChange={handleChange}>

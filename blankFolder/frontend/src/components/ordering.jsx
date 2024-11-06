@@ -144,8 +144,8 @@ export default function Ordering() {
                     </Tab>
                 </Tabs>
                 <Card>
-                    <Card.Title>Basket</Card.Title>
                     <Card.Body>
+                        <Card.Title>Basket</Card.Title>
                         <Table striped>
                             <thead>
                                 <tr>
