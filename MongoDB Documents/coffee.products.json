@@ -90,15 +90,6 @@
 },
 {
   "_id": {
-    "$oid": "66f1472a6fdb8c4965599410"
-  },
-  "name": "Tofu",
-  "price": 9.95,
-  "image": "https://i0.wp.com/www.relishthebite.com/wp-content/uploads/2015/03/TOFU-2.jpg",
-  "type": "food"
-},
-{
-  "_id": {
     "$oid": "6703b5ccc8392d7ac5ac287b"
   },
   "name": "Chicken Borgor",
@@ -114,4 +105,13 @@
   "name": "Chippy Chips",
   "price": 2.5,
   "type": "food"
+},
+{
+  "_id": {
+    "$oid": "672b55797168903790c828ea"
+  },
+  "name": "Can",
+  "price": 0.85,
+  "image": "https://www.freepnglogos.com/uploads/coca-cola-png/coca-cola-classic-the-coca-cola-company-30.png",
+  "type": "drink"
 }]

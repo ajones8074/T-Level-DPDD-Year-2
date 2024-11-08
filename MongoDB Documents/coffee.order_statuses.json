@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "672b323b7168903790c828e4"
+  },
+  "status": 0,
+  "description": "Pending"
+},
+{
+  "_id": {
+    "$oid": "672b32a47168903790c828e5"
+  },
+  "status": 1,
+  "description": "Being Prepared"
+},
+{
+  "_id": {
+    "$oid": "672b32b27168903790c828e6"
+  },
+  "status": 2,
+  "description": "Ready for Collection"
+},
+{
+  "_id": {
+    "$oid": "672b32c47168903790c828e7"
+  },
+  "status": 3,
+  "description": "Order Collected"
+}]
