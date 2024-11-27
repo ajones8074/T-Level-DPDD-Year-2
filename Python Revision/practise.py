@@ -26,6 +26,7 @@ plt.show()
 
 # create a filter to select data for Alicante and JetWay
 select = (df['Destination'] == 'Alicante') & (df['Airline'] == 'JetWay')
+
 # print data within the filter
 # .loc is required to print all data
 # if .loc is not used, each row of data is displayed as true or false
