@@ -20,7 +20,7 @@ function CardOne() {
             <Card className="christmas-card"> 
                 <Lottie options={defaultOptions} height={300} width={300} /> 
                 <Card.Body> 
-                    <Card.Title className="cedarville-cursive-regular">Merry Christmas & Happy New Year!</Card.Title> 
+                    <Card.Title className="cedarville-cursive-regular-title">Merry Christmas & Happy New Year!</Card.Title> 
                     <Link to="/1">
                         <Button className="card-button">Open</Button>
                     </Link>  
