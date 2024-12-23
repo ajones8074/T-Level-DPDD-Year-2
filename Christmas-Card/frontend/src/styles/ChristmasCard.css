@@ -1,0 +1,55 @@
+.card-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  min-width: 100vw; 
+  background-image: url('../assets/background.png'); 
+  background-size: cover; 
+  background-position: center;
+  }
+  
+  .christmas-card {
+    background-color: #8B0000; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
+    color: white; 
+    height: 60vh; 
+    width: 30rem; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+  }
+  
+  .card-button {
+    background-color: #A52A2A; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 50%;
+  }
+  
+  .card-button:hover {
+    background-color: #8B0000;
+  }
+  
+  .cedarville-cursive-regular-title {
+    font-family: "Cedarville Cursive", serif;
+    font-weight: 600;
+    font-size: 40px;
+    font-style: normal;
+  }
+
+  .cedarville-cursive-regular {
+    font-family: "Cedarville Cursive", serif;
+    font-weight: 400;
+    font-size: 25px;
+    font-style: normal;
+  }
+  
