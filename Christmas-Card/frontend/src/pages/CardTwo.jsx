@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Button, Card, Container } from 'react-bootstrap';
-import Lottie from 'react-lottie';
-import animationData from '../assets/animation_santa.json';
 import '../styles/ChristmasCard.css'
 import axios from "axios";
 
